@@ -25,7 +25,6 @@
 | --------- | ---------- | ------------------------------ |
 | item_name | string     | null: false                    |
 | price     | integer    | null: false                    |
-| image     | text       | null: false                    |
 | describe  | text       | null: false                    |
 | category  | integer    | null: false                    |
 | status    | integer    | null: false                    |
