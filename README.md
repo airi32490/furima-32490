@@ -11,7 +11,7 @@
 | family_name_reading | string  | null: false |
 | first_name_reading  | string  | null: false |
 | nickname            | string  | null: false |
-| birthday            | integer | null: false |
+| birthday            | date    | null: false |
 
 ### Association
 
