@@ -29,28 +29,28 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Describe can't be blank")
       end
-      it 'category_idが選択されていないと出品できない' do
-        @item.category_id = nil
+      it 'category_idがid=1を選択していると出品できない' do
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category Select')
       end
-      it 'status_idが選択されていないと出品できない' do
-        @item.status_id = nil
+      it 'status_idがid=1を選択していると出品できない' do
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Status Select')
       end
-      it 'fee_idが選択されていないと出品できない' do
-        @item.fee_id = nil
+      it 'fee_idがid=1を選択していると出品できない' do
+        @item.fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Fee Select')
       end
-      it 'area_idが選択されていないと出品できない' do
-        @item.area = nil
+      it 'area_idがid=1を選択していると出品できない' do
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Area Select')
       end
-      it 'day_idが選択されていないと出品できない' do
-        @item.day_id = nil
+      it 'day_idがid=1を選択していると出品できない' do
+        @item.day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Day Select')
       end
