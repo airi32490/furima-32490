@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-
   end
 
   private
@@ -23,5 +22,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :price, :describe, :image, :category_id, :status_id, :area_id, :day_id, :fee_id).merge(user_id: current_user.id)
   end
-
 end

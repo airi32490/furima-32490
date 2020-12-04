@@ -32,27 +32,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが選択されていないと出品できない' do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it 'status_idが選択されていないと出品できない' do
         @item.status_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it 'fee_idが選択されていないと出品できない' do
         @item.fee_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee Select")
+        expect(@item.errors.full_messages).to include('Fee Select')
       end
       it 'area_idが選択されていないと出品できない' do
         @item.area = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area Select")
+        expect(@item.errors.full_messages).to include('Area Select')
       end
       it 'day_idが選択されていないと出品できない' do
         @item.day_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day Select")
+        expect(@item.errors.full_messages).to include('Day Select')
       end
       it 'priceが入力されていないと出品できない' do
         @item.price = nil
@@ -62,23 +62,23 @@ RSpec.describe Item, type: :model do
       it 'priceが¥300円未満だと出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceが¥10,000,000以上だと出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
       it 'priceが全角数字だと出品できない' do
         @item.price = '１００００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid. Input half-width characters.",
-                                                      "Price is out of setting range")
+        expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters.',
+                                                      'Price is out of setting range')
       end
       it 'ログインしていないユーザーは出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
