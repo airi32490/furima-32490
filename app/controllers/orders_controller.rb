@@ -2,14 +2,13 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :move_to_index, only: [:index]
   before_action :check_order, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -26,9 +25,15 @@ class OrdersController < ApplicationController
     params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :tel_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def move_to_index
     @item = Item.find(params[:item_id])
-    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def pay_item
@@ -41,6 +46,8 @@ class OrdersController < ApplicationController
   end
 
   def check_order
-    redirect_to root_path if user_signed_in? && !@item.order.nil?
+    if user_signed_in? && @item.order != nil
+      redirect_to root_path
+    end
   end
 end
