@@ -4,10 +4,13 @@ class OrderAddress
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'Input correctly' }
+    validates :prefecture_id
     validates :city
     validates :house_number
     validates :tel_number, format: { with: /\A\d{11}\z/, message: 'Input only number' }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
