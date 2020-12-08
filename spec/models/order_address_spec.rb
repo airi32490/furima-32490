@@ -20,17 +20,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeが入力されていないと購入できない' do
         @order_address.postal_code = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code can't be blank", "Postal code Input correctly")
+        expect(@order_address.errors.full_messages).to include("Postal code can't be blank", 'Postal code Input correctly')
       end
       it 'posta_codeにハイフンが含まれていないと購入できない' do
-        @order_address.postal_code = "1234567"
+        @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code Input correctly")
+        expect(@order_address.errors.full_messages).to include('Postal code Input correctly')
       end
       it 'prefecture_idがid=1を選択していると購入できない' do
         @order_address.prefecture_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Prefecture Select")
+        expect(@order_address.errors.full_messages).to include('Prefecture Select')
       end
       it 'cityが入力されていないと購入できない' do
         @order_address.city = nil
@@ -48,9 +48,9 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Tel number can't be blank")
       end
       it 'tel_numberにハイフンが含まれていると購入できない' do
-        @order_address.tel_number = "090-1234-5678"
+        @order_address.tel_number = '090-1234-5678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Tel number Input only number")
+        expect(@order_address.errors.full_messages).to include('Tel number Input only number')
       end
       it 'tokenが空では購入できない' do
         @order_address.token = nil
