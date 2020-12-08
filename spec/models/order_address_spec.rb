@@ -7,7 +7,7 @@ RSpec.describe OrderAddress, type: :model do
 
   describe '商品の購入' do
     context '商品の購入が成功するとき' do
-      it '全ての情報を正しく入力すれば購入できる' do
+      it '全ての情報を正しく入力し、tokenがあれば購入できる' do
         expect(@order_address).to be_valid
       end
       it 'building_nameが空でも購入できる' do
@@ -51,6 +51,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.tel_number = "090-1234-5678"
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tel number Input only number")
+      end
+      it 'tokenが空では購入できない' do
+        @order_address.token = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
