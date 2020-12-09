@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :move_to_index, only: [:index]
   before_action :check_order, only: [:index]
   before_action :set_item, only: [:index, :create]
