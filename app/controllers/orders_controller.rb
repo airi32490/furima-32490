@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:index]
   before_action :check_order, only: [:index]
-  before_action :set_item, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
@@ -30,7 +30,6 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
     if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
     end
